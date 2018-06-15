@@ -1,0 +1,62 @@
+<!-- HTML -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Serializando</title>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div>
+		<form id="frm">
+			<label for="nome">Nome</label>
+			<input id="nome" name="nome" /><br>
+			
+			<label for="email">Email</label>
+			<input id="email" name="email" /><br>
+			
+			<label>Genero<br>
+			<input type="radio" name="gender" value="male"> Male<br>
+			<input type="radio" name="gender" value="female"> Female<br>
+			<input type="radio" name="gender" value="other"> Other
+			</label>
+			<br>
+			<label>Veiculo<br>
+			<input type="checkbox" name="vehicle[]" value="Bike"> I have a bike<br>
+			<input type="checkbox" name="vehicle[]" value="Car" checked> I have a car<br>
+			</label>
+			<br>
+			<label for="carro_marca">Marca carro</label><br>
+			<select multiple id="carro_marca" name="carro_marca[]">
+			  <option value="volvo">Volvo</option>
+			  <option value="saab">Saab</option>
+			  <option value="opel">Opel</option>
+			  <option value="audi">Audi</option>
+			</select>
+			<br>
+			<input type="button" id="salvar" value="Salvar" />
+		</form>
+	</div>
+	<div id="result"></div>
+</body>
+
+</html>
+
+<!-- Javascript / Jquery -->
+<script type="text/javascript">
+$(document).ready( function () {
+	$("#salvar").on("click", function(){
+
+		var dados = $("#frm").serialize();
+		$.post( 'serializar.php', { valores: dados }, function( data ) {
+		  $( "#result" ).html( data );
+		});
+	});
+} );
+</script>
+
+
