@@ -1,4 +1,4 @@
-<!-- PHP --> 
+<!-- PHP -->
 <?php
 if(isset($_POST['valores'])){
 	$valores = array();
